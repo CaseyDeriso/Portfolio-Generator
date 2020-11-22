@@ -3,28 +3,28 @@ const fs = require("fs");
 const generatePage = require("./src/page-template.js");
 
 const mockData = {
-  name: 'casey',        
-  github: 'caseyderiso',
+  name: "casey",
+  github: "caseyderiso",
   confirmAbout: true,
-  about: 'i\'m a dude, plaing a dude, disguised as another dude.',
+  about: "i'm a dude, plaing a dude, disguised as another dude.",
   projects: [
     {
-      name: 'casey',
-      description: 'casey',
-      languages: [Array],
-      link: 'github.com/poopoo',
+      name: "casey",
+      description: "casey",
+      languages: ['Javascript', 'HTML', 'CSS'],
+      link: "https://github.com",
       feature: true,
-      confirmAddProject: true
+      confirmAddProject: true,
     },
     {
-      name: 'jones',
-      languages: [],
-      link: 'github.com/peepee',
+      name: "jones",
+      languages: ['Javascript', 'Jquery'],
+      link: "https://github.com",
       feature: false,
-      confirmAddProject: false
-    }
-  ]
-}
+      confirmAddProject: false,
+    },
+  ],
+};
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -164,12 +164,23 @@ const promptProject = (portfolioData) => {
     });
 };
 
+// prompt user, prompt projects, then create HTML
 // promptUser()
 //   .then(promptProject)
 //   .then((portfolioData) => {
-    const pageHTML = generatePage(mockData);
-    fs.writeFile('./index.html', pageHTML, err => {
-        if (err) throw err;
-        console.log("Portfolio complete! Check out index.html to see the output!")
-    });
-  // });
+// const pageHTML = generatePage(portfolioData);
+// fs.writeFile("./index.html", pageHTML, (err) => {
+//   if (err) throw err;
+//   console.log("Portfolio complete! Check out index.html to see the output!");
+// });
+// });
+
+// create file with mock data
+const test = (data) => {
+  const pageHTML = generatePage(mockData);
+  fs.writeFile("./index.html", pageHTML, (err) => {
+    if (err) throw err;
+    console.log("Portfolio complete! Check out index.html to see the output!");
+  });
+};
+test();
